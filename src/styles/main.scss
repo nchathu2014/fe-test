@@ -43,3 +43,71 @@ font-family: "Open Sans";
   border:3px solid #e6e6e6;
 }
 
+.error-msg{
+  background-color: #ffe6e6;
+  padding: 3px;
+  width: 120px;
+  font-size: 12px;
+  text-align: center;
+  font-family: sans-serif;
+  font-weight: normal;
+  color: #ff1a1a;
+  margin-bottom: 0px;
+  float: right;
+
+}
+
+.margin-style{
+  margin-bottom: 55px;
+}
+
+.text-box-padding{
+  padding: 25px;
+}
+
+
+
+
+
+//Checkbox override
+
+.checkbox label:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.checkbox .cr {
+  position: relative;
+  display: inline-block;
+  border: 1px solid #a9a9a9;
+  border-radius: .25em;
+  width: 1.3em;
+  height: 1.3em;
+  float: left;
+  margin-right: .5em;
+}
+
+.checkbox .cr .cr-icon {
+  position: absolute;
+  font-size: .8em;
+  line-height: 0;
+  top: 50%;
+  left: 20%;
+}
+
+.checkbox label input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox label input[type="checkbox"]+.cr>.cr-icon {
+  opacity: 0;
+}
+
+.checkbox label input[type="checkbox"]:checked+.cr>.cr-icon {
+  opacity: 1;
+}
+
+.checkbox label input[type="checkbox"]:disabled+.cr {
+  opacity: .5;
+}

@@ -34,7 +34,7 @@ class FeAssignment extends Component {
    */
   _initFeAssignment() {
     this.userValidation = userValidation.bind(this);
-    this.emailOnChange = this.emailOnChange.bind(this);
+    this.userNameOnChange = this.userNameOnChange.bind(this);
     this.passwordOnChange = this.passwordOnChange.bind(this);
     this.createUserCredntialObject = this.createUserCredntialObject.bind(this);
     this.errorControl = this.errorControl.bind(this);
@@ -96,7 +96,7 @@ class FeAssignment extends Component {
    *
    * @param event
    */
-  emailOnChange(event) {
+  userNameOnChange(event) {
 
 
 
@@ -154,7 +154,7 @@ class FeAssignment extends Component {
             <div className="panel panel-default">
               <div className="panel-body">
 
-                <div className="text-center">
+                <div className="text-center margin-style">
                   <h3>Sign In Now</h3>
                   Unlock awesome features
                 </div>
@@ -162,23 +162,23 @@ class FeAssignment extends Component {
                 <form role="form">
                   <div className={this.state.isDirtyUsername?'form-group has-error':'form-group'}>
                     {this.state.isDirtyUsername &&
-                    <InlineError errorMsg="Required"/>
+                    <InlineError errorMsg="Required field"/>
                     }
                     <input
-                      type="email"
-                      className="form-control"
+                      type="text"
+                      className="form-control text-box-padding"
                       id="txtUsername"
                       placeholder="Username"
-                      onChange={this.emailOnChange}
+                      onChange={this.userNameOnChange}
                     />
                   </div>
                   <div className={this.state.isDirtyPassword?'form-group has-error':'form-group'}>
                     {this.state.isDirtyPassword &&
-                    <InlineError errorMsg="Required"/>
+                    <InlineError errorMsg="Required field"/>
                     }
                     <input
                       type="password"
-                      className="form-control"
+                      className="form-control text-box-padding"
                       id="txtPwd"
                       placeholder="Password"
                       onChange={this.passwordOnChange}
@@ -194,6 +194,15 @@ class FeAssignment extends Component {
                           id="chkLoggedID"
                           value="loggedInValue"
                         /> <span className="font-small">Keep me logged in</span>
+
+                        <div className="checkbox">
+                          <label>
+                            <input type="checkbox" value="" checked/>
+                              <span className="cr"><i className="cr-icon glyphicon glyphicon-ok"></i></span>
+                              Keep me logged in
+                          </label>
+                        </div>
+
                       </label>
                     </div>
                   </div>
