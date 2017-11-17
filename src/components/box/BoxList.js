@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component,PropTypes } from 'react';
 import Box from './../box/Box';
-
 
 class BoxList extends Component {
 
@@ -8,21 +7,35 @@ class BoxList extends Component {
     super(props);
   }
 
-  render(){
+  render() {
     const productList = this.props.productList;
-    return(
+    return (
       <div className='container-fluid'>
         <div className="row">
-            {productList && productList.map((product,index)=>{
-              return(
-                <Box product={product} key={index}/>
-              )
-            })}
+          {productList && productList.map((product, index)=> {
+            return (
+              <Box product={product} key={index}/>
+            )
+          })}
         </div>
-     </div>
-
+      </div>
     )
   }
 }
+
+/**
+ *
+ * @type {{}}
+ */
+BoxList.propTypes = {
+  product: PropTypes.object
+};
+
+/**
+ *
+ * @type {{}}
+ */
+BoxList.defaultProps = {};
+
 
 export default BoxList;

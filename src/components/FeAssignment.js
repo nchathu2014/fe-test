@@ -1,10 +1,16 @@
 import React, {PropTypes,Component} from 'react';
-import logo from './../img/welcome.png';
-import './../styles/main.scss';
-import {userValidation} from './../component-manager/FeAssignmentManager';
-import Header from './Header';
+import {CONSTANTS} from './../constant/constant';
+import {
+  __userValidation,
+  __userNameOnChange,
+  __passwordOnChange,
+  __createUserCredentialObject,
+  __errorControl
+} from './../component-manager/FeAssignmentManager';
+import Header from './header/Header';
 import BoxList from './box/BoxList';
 import InlineError from './error/InlineError';
+import './../styles/main.scss';
 
 class FeAssignment extends Component {
 
@@ -18,8 +24,8 @@ class FeAssignment extends Component {
     this.state = {
       txtUsername: '',
       txtPwd: '',
-      isDirtyUsername:false,
-      isDirtyPassword:false,
+      isDirtyUsername: false,
+      isDirtyPassword: false,
       products: [
         {logo: 'product.png', product: 'Phone 6 Black', price: 'AED 1000'},
         {logo: 'product.png', product: 'iPhone 7 Black', price: 'AED 2000'},
@@ -33,107 +39,11 @@ class FeAssignment extends Component {
    * @private
    */
   _initFeAssignment() {
-    this.userValidation = userValidation.bind(this);
-    this.userNameOnChange = this.userNameOnChange.bind(this);
-    this.passwordOnChange = this.passwordOnChange.bind(this);
-    this.createUserCredntialObject = this.createUserCredntialObject.bind(this);
-    this.errorControl = this.errorControl.bind(this);
-  }
-
-  /**
-   * Life Cycle function - componentWillMount
-   */
-  componentWillMount() {
-  }
-
-  /**
-   * Life Cycle function - componentDidMount
-   */
-  componentDidMount() {
-  }
-
-  /**
-   * Life Cycle function - componentWillReceiveProps
-   * @param newProps
-   */
-  componentWillReceiveProps(newProps) {
-  }
-
-  /**
-   * Life Cycle function - shouldComponentUpdate
-   * @param newProps
-   * @param newState
-   * @returns {boolean}
-   */
-  shouldComponentUpdate(newProps, newState) {
-    return true;
-  }
-
-  /**
-   * Life Cycle function - componentWillUpdate
-   * @param nextProps
-   * @param nextState
-   */
-  componentWillUpdate(nextProps, nextState) {
-  }
-
-  /**
-   * Life Cycle function - componentDidUpdate
-   * @param prevProps
-   * @param prevState
-   */
-  componentDidUpdate(prevProps, prevState) {
-  }
-
-  /**
-   * Life Cycle function - componentWillUnmount
-   */
-  componentWillUnmount() {
-  }
-
-
-  /**
-   *
-   * @param event
-   */
-  userNameOnChange(event) {
-
-
-
-    console.info(event.target.value)
-    this.setState({
-      txtUsername: event.target.value,
-      isDirtyUsername:!this.errorControl(event.target.value)
-    });
-  }
-
-  /**
-   *
-   * @param event
-   */
-  passwordOnChange(event) {
-    this.setState({
-      txtPwd: event.target.value,
-      isDirtyPassword:!this.errorControl(event.target.value)
-    });
-  }
-
-
-  createUserCredntialObject(username, pwd) {
-    return {
-      username: username,
-      password: pwd
-    }
-  }
-
-  errorControl(formValue){
-    let valueStatus=null;
-    if(formValue){
-      valueStatus=true;
-    }else{
-      valueStatus=false;
-    }
-    return valueStatus;
+    this.userValidation = __userValidation.bind(this);
+    this.userNameOnChange = __userNameOnChange.bind(this);
+    this.passwordOnChange = __passwordOnChange.bind(this);
+    this.createUserCredntialObject = __createUserCredentialObject.bind(this);
+    this.errorControl = __errorControl.bind(this);
   }
 
   /**
@@ -161,9 +71,10 @@ class FeAssignment extends Component {
 
                 <form role="form">
                   <div className={this.state.isDirtyUsername?'form-group has-error':'form-group'}>
-                    {this.state.isDirtyUsername &&
-                    <InlineError errorMsg="Required field"/>
-                    }
+                    {this.state.txtUsername && <label htmlFor="txtUsername">
+                      {CONSTANTS.COMPONENT.FEASSIGNMENT.LABEL.USERNAME}
+                    </label>}
+                    {this.state.isDirtyUsername && <InlineError errorMsg="Required field"/>}
                     <input
                       type="text"
                       className="form-control text-box-padding"
@@ -173,9 +84,10 @@ class FeAssignment extends Component {
                     />
                   </div>
                   <div className={this.state.isDirtyPassword?'form-group has-error':'form-group'}>
-                    {this.state.isDirtyPassword &&
-                    <InlineError errorMsg="Required field"/>
-                    }
+                    {this.state.txtPwd && <label htmlFor="txtUsername">
+                      {CONSTANTS.COMPONENT.FEASSIGNMENT.LABEL.PASSWORD}
+                    </label>}
+                    {this.state.isDirtyPassword && <InlineError errorMsg="Required field"/>}
                     <input
                       type="password"
                       className="form-control text-box-padding"
@@ -186,7 +98,9 @@ class FeAssignment extends Component {
                   </div>
 
                   <div className="clearfix" style={{paddingBottom:30}}>
-                    <div className="pull-right"><span className="font-small color-blue">Forgot password?</span></div>
+                    <div className="pull-right">
+                      <button type="button" className="btn btn-link color-blue">Forgot password?</button>
+                    </div>
                     <div className="pull-left">
                       <label className="checkbox-inline">
                         <input
@@ -198,8 +112,8 @@ class FeAssignment extends Component {
                         <div className="checkbox">
                           <label>
                             <input type="checkbox" value="" checked/>
-                              <span className="cr"><i className="cr-icon glyphicon glyphicon-ok"></i></span>
-                              Keep me logged in
+                            <span className="cr"><i className="cr-icon glyphicon glyphicon-ok"></i></span>
+                            Keep me logged in
                           </label>
                         </div>
 
@@ -233,7 +147,10 @@ class FeAssignment extends Component {
  *
  * @type {{}}
  */
-FeAssignment.propTypes = {};
+FeAssignment.propTypes = {
+  productList: PropTypes.array,
+  errorMsg: PropTypes.string.isRequired
+};
 
 /**
  *

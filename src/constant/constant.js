@@ -1,3 +1,15 @@
-/**
- * Created by UCHATNU on 2/10/2017.
- */
+const CONSTANTS = {
+  COMPONENT:{
+    FEASSIGNMENT:{
+      LABEL:{
+        USERNAME:'Username',
+        PASSWORD:'Password'
+      }
+    }
+  }
+};
+
+
+module.exports ={
+  CONSTANTS:CONSTANTS
+};
