@@ -3,8 +3,7 @@ import $ from 'jquery';
 import url from './url';
 
  function callUserAuthenticationAPI(){
-   let result={};
-   $.ajax({
+   let result = $.ajax({
      url: 'https://reqres.in/api/users/2',
      type: 'GET',
      dataType:'json',
@@ -20,7 +19,6 @@ import url from './url';
        result = err
      }
    });
-   return result;
 }
 
 

@@ -186,14 +186,14 @@ class FeAssignment extends Component {
                   </div>
 
                   <div className="clearfix" style={{paddingBottom:30}}>
-                    <div className="pull-right">Forgot password?</div>
+                    <div className="pull-right"><span className="font-small color-blue">Forgot password?</span></div>
                     <div className="pull-left">
                       <label className="checkbox-inline">
                         <input
                           type="checkbox"
                           id="chkLoggedID"
                           value="loggedInValue"
-                        /> Keep me logged in
+                        /> <span className="font-small">Keep me logged in</span>
                       </label>
                     </div>
                   </div>
@@ -210,6 +210,7 @@ class FeAssignment extends Component {
         </div>
         <div className="row">
           <div className="col-lg-12">
+            <div className="space-div clearfix">&nbsp;</div>
             <BoxList productList={this.state.products}/>
           </div>
         </div>

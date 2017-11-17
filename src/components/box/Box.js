@@ -5,11 +5,11 @@ import logo from './../../img/product/product.png';
 export default ({product}) => (
     <div className="col-lg-4">
       <div className="text-center">
-        <img src={logo}  alt={product.product} style={{border:'1px solid black'}}/>
+        <img src={logo}  alt={product.product} className="full-border"/>
       </div>
-     <div style={{paddingLeft:100}}>
+     <div style={{paddingLeft:105}}>
        <div>{product.product}</div>
-       <div>{product.price}</div>
+       <div className="font-medium"><b>{product.price}</b></div>
      </div>
     </div>
 );

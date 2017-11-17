@@ -3,5 +3,43 @@
 @import 'scss/colors';
 
 body{
-
+font-family: "Open Sans";
 }
+
+
+//Override styles
+
+.panel.panel-default{
+  width:$width;
+  margin-bottom: 100px;
+}
+
+.space-div{
+  height:75px;
+  border-top:1px solid #e6e6e6;
+}
+
+.input-group > .search-box{
+  background-color: #f0f7fe;
+  width: 150px;
+  float: right;
+  border:none;
+  padding: 20px;
+}
+
+.font-small{
+  font-size: $font-small;
+}
+
+.color-blue{
+  color: mediumblue;
+}
+
+.font-medium{
+  font-size: $font-medium;
+}
+
+.full-border{
+  border:3px solid #e6e6e6;
+}
+
