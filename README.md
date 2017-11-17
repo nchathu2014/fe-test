@@ -1,6 +1,15 @@
 # Run
 
-  1 - clone the project
-  2 - npm install
-  3 - npm run start - DEV version
-      npm run build - BUILD version
+** NOTE: for Testing 
+   username:Janet 
+   password: Weaver
+
+         - clone the project
+         - npm install
+         - npm run start - DEV version  OR npm run build - BUILD version
+         - npm install
+
+
+      
+      
+      
