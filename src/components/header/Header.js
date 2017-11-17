@@ -30,7 +30,7 @@ class Header extends Component {
   renderFullSearchBox() {
     return (
       <div className="input-group">
-        <input type="text" className="form-control search-box" placeholder="Search"/>
+        <input type="text" className="form-control" id="search-box" placeholder="Search"/>
         <span className="input-group-addon" style={{backgroundColor:'#f0f7fe',border:'none'}}
               onBlur={this.hideSearchBox}>
           <i className="glyphicon glyphicon-search"></i>

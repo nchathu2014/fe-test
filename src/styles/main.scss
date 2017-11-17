@@ -19,9 +19,10 @@ font-family: "Open Sans";
   border-top:1px solid #e6e6e6;
 }
 
-.input-group > .search-box{
+#search-box{
   background-color: #f0f7fe;
-  width: 150px;
+  box-shadow: none;
+  width: 140px;
   float: right;
   border:none;
   padding: 20px;
@@ -61,11 +62,25 @@ font-family: "Open Sans";
   margin-bottom: 55px;
 }
 
+.glyphicon .glyphicon-search{
+  color:#23527c;
+  font-size: 16px;
+}
+
 .text-box-padding{
   padding: 25px;
 }
 
+#txtUsername, #txtPwd{
+  padding: 25px;
+}
+
+
 //Checkbox override
+
+.checkbox{
+  padding: 0;
+}
 
 .checkbox label:after {
   content: '';
@@ -76,12 +91,15 @@ font-family: "Open Sans";
 .checkbox .cr {
   position: relative;
   display: inline-block;
-  border: 1px solid #a9a9a9;
+  border: 1px solid #05549f;
   border-radius: .25em;
   width: 1.3em;
   height: 1.3em;
   float: left;
-  margin-right: .5em;
+ // margin-right: .5em;
+
+  background-color: #05549f;
+
 }
 
 .checkbox .cr .cr-icon {
@@ -90,6 +108,7 @@ font-family: "Open Sans";
   line-height: 0;
   top: 50%;
   left: 20%;
+  color: #fff;
 }
 
 .checkbox label input[type="checkbox"] {
@@ -97,13 +116,26 @@ font-family: "Open Sans";
 }
 
 .checkbox label input[type="checkbox"]+.cr>.cr-icon {
-  opacity: 0;
+ // opacity: 0;
 }
 
 .checkbox label input[type="checkbox"]:checked+.cr>.cr-icon {
-  opacity: 1;
+  //opacity: 1;
 }
 
 .checkbox label input[type="checkbox"]:disabled+.cr {
-  opacity: .5;
+ // opacity: .5;
 }
+
+.checkbox label, .radio label {
+  min-height: 20px;
+  padding-left: 0px;
+  margin-bottom: 0;
+  cursor: pointer;
+
+}
+
+
+
+
+

@@ -1,32 +1,28 @@
 
 import $ from 'jquery';
-import url from './url';
+import {__url} from './url';
 
- function callUserAuthenticationAPI(){
-   let result = $.ajax({
-     url: 'https://reqres.in/api/users/2',
-     type: 'GET',
-     dataType:'json',
-     success: function(result) {
+ function callUserAuthenticationAPI(successCallback,errorCallback){
+   let result ={};
 
-        console.info(result)
-         result = result.data
-
-
-
-     },
-     error:function(err){
-       result = err
-     }
+   $.when(
+     $.ajax(__url.USER_AUTHENTICATION)).then(
+     function( data, textStatus, jqXHR ) {
+       if(jqXHR.status === 200){
+         const {first_name,last_name} = data.data;
+         successCallback({
+           username:first_name,
+           password:last_name
+         });
+       }else{
+         errorCallback(data);
+       }
    });
+   return result;
 }
 
-
-
-
 module.exports = {
-  callUserAuthenticationAPI:callUserAuthenticationAPI
-
+  __callUserAuthenticationAPI:callUserAuthenticationAPI
 };
 
 

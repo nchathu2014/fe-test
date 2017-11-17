@@ -1,22 +1,26 @@
-import {callUserAuthenticationAPI,callback} from './../api/userAthentication';
+import {__callUserAuthenticationAPI,callback} from './../api/userAthentication';
 
 /**
  * User validation and Authertication
  * @param obj
  */
 function validateLoginCredentials(obj) {
+  //NOTE: for Testing username:Janet password: Weaver
+
   const username = obj.username.trim();
   const password = obj.password.trim();
 
+  /**
+   * User Authentication
+   */
+  __callUserAuthenticationAPI((userObj)=> {
+      (userObj.username === username && userObj.password === password) ? alert(`Access Granted`) :
+                                                                         alert(`Access Denied`);
+    },
+    (error)=> {
+      alert(`ERROR ${error}`)
+    });
 
-//let user = callUserAuthenticationAPI();
-
-  let user = callUserAuthenticationAPI();
-  setTimeout(()=> {
-
-  }, 6000);
-  //console.info(user.username === username)
-  //console.info(user.password === password)
 
 }
 

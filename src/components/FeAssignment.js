@@ -66,7 +66,7 @@ class FeAssignment extends Component {
 
                 <div className="text-center margin-style">
                   <h3>Sign In Now</h3>
-                  Unlock awesome features
+                  <span>Unlock awesome features</span>
                 </div>
 
                 <form role="form">
@@ -97,27 +97,19 @@ class FeAssignment extends Component {
                     />
                   </div>
 
-                  <div className="clearfix" style={{paddingBottom:30}}>
-                    <div className="pull-right">
+                  <div className="clearfix">
+                    <div className="pull-right" style={{textAlign:'right'}}>
                       <button type="button" className="btn btn-link color-blue">Forgot password?</button>
                     </div>
                     <div className="pull-left">
-                      <label className="checkbox-inline">
-                        <input
-                          type="checkbox"
-                          id="chkLoggedID"
-                          value="loggedInValue"
-                        /> <span className="font-small">Keep me logged in</span>
 
-                        <div className="checkbox">
-                          <label>
-                            <input type="checkbox" value="" checked/>
-                            <span className="cr"><i className="cr-icon glyphicon glyphicon-ok"></i></span>
-                            Keep me logged in
-                          </label>
-                        </div>
-
-                      </label>
+                      <div className="checkbox">
+                        <label style={{marginLeft:0}}>
+                          <input type="checkbox" value="" checked/>
+                          <span className="cr"><i className="cr-icon glyphicon glyphicon-ok"></i></span>
+                          Keep me logged in
+                        </label>
+                      </div>
                     </div>
                   </div>
                   <button
@@ -149,7 +141,8 @@ class FeAssignment extends Component {
  */
 FeAssignment.propTypes = {
   productList: PropTypes.array,
-  errorMsg: PropTypes.string.isRequired
+  errorMsg: PropTypes.string.isRequired,
+  onChange:PropTypes.func.isRequired
 };
 
 /**

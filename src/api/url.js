@@ -3,5 +3,5 @@ let url = {
 };
 
 module.exports = {
-  url: url
+  __url: url
 };
