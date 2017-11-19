@@ -1,4 +1,5 @@
 import React, {PropTypes,Component} from 'react';
+//import Worker from 'worker-loader!./../api/background/myworker';
 import {CONSTANTS} from './../constant/constant';
 import {
   __userValidation,
@@ -7,11 +8,14 @@ import {
   __createUserCredentialObject,
   __errorControl
 } from './../component-manager/FeAssignmentManager';
+
 import Header from './header/Header';
 import BoxList from './box/BoxList';
 import InlineError from './error/InlineError';
 import './../styles/main.scss';
 
+let MyWorker = require("worker!./../api/background/myworker.js");
+//https://medium.com/@schreiaj/using-web-workers-react-and-webpack-d2773e3f362d
 class FeAssignment extends Component {
 
   /**
@@ -24,6 +28,7 @@ class FeAssignment extends Component {
     this.state = {
       txtUsername: '',
       txtPwd: '',
+      data:6,
       isDirtyUsername: false,
       isDirtyPassword: false,
       products: [
@@ -44,6 +49,44 @@ class FeAssignment extends Component {
     this.passwordOnChange = __passwordOnChange.bind(this);
     this.createUserCredntialObject = __createUserCredentialObject.bind(this);
     this.errorControl = __errorControl.bind(this);
+    this.incrementData = this.incrementData.bind(this);
+    this.stop = this.stop.bind(this);
+  }
+
+  stop(){
+    this.worker.terminate();
+    this.worker = undefined;
+    this.setState({
+      dataMsg:"Increment Stopped"
+    })
+  }
+
+  incrementData(){
+
+    if(typeof(this.worker) == "undefined"){
+      this.worker = new MyWorker();
+    }
+    let message=this.state.data;
+    this.worker.postMessage(message);
+    let _this = this;
+    this.worker.onmessage=(event)=>{
+      console.info(event.data)
+      _this.setState({
+        data:event.data,
+        dataMsg:"Incrementing..."
+      });
+    }
+  }
+
+
+  componentWillMount(){
+
+    if(typeof(Worker) !== 'undefined'){
+      this.worker = new MyWorker();
+      console.info("***",this.worker);
+    }else{
+      console.info("Worker Not Support");
+    }
   }
 
   /**
@@ -51,11 +94,25 @@ class FeAssignment extends Component {
    * @returns {XML}
    */
   render() {
+
     return (
 
       <div className='container-fluid'>
         <div className="row">
           <div className="col-lg-12">
+
+            <div className="progress">
+              <div className="progress-bar" role="progressbar" aria-valuenow="70"
+                   aria-valuemin="0" aria-valuemax="100" style={{width:this.state.data+'%'}}>
+                <span className="sr-only">70% Complete</span>
+              </div>
+            </div>
+
+            <br />
+            {this.state.data}<br/>
+            {this.state.dataMsg}<br/>
+            <button onClick={this.incrementData}> Start Increment </button>
+            <button onClick={this.stop}> Stop </button>
             <Header/>
           </div>
         </div>

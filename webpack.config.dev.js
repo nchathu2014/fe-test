@@ -33,7 +33,7 @@ export default {
             {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream'},
             {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml'},
             {test: /\.(ttf|eot|svg|eot|woff|otf|png|jpg|gif)/, loader: "file-loader?name=img/[name].[ext]"},
-
+            {test: /\.worker\.js$/, use: { loader: 'worker-loader' }}
         ]
     }
 };
